@@ -1,8 +1,44 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Image Mapper
+
+A powerful and flexible React component for mapping and displaying images with interactive features.
+
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
+![Version](https://img.shields.io/badge/version-1.0.0-green.svg)
+
+## 🚀 Features
+
+- Interactive image mapping
+- Responsive design
+- Custom hover effects
+- Loading and error states
+- TypeScript support
+- Tailwind CSS integration
+
+## 📋 Prerequisites
+
+Before you begin, ensure you have the following installed:
+- Node.js (v16.0.0 or higher)
+- npm or yarn
+- React (v17.0.0 or higher)
+
 
 ## Getting Started
+```bash
+git clone https://github.com/codersaadi/dynamic-images-nextjs.git
+cd dynamic-images-nextjs
+npm install 
+```
+## Setting Env Variables 
+```bash
+PIXELS_API_KEY=""
+UNSPLASH_ACCESS_KEY=""
+UNSPLASH_SECRET_KEY=""
+PIXABAY_API_KEY=""
+```
+
 
 First, run the development server:
+
 
 ```bash
 npm run dev
