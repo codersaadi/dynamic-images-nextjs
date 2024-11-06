@@ -65,7 +65,9 @@ export default function useImagesLib() {
         setLoading(false)
         initialRender.current = false
       }
-    },
+    }
+    ,
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [
       // initialRender,
       //  fetchedPages

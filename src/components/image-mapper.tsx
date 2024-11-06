@@ -1,10 +1,11 @@
 'use client'
 import type React from 'react'
-import { useCallback, useRef, useState } from 'react'
+import { useCallback, useRef } from 'react'
 
-import useImagesLib, { $ImageSource } from '@/hooks/useImageLib'
+import useImagesLib from '@/hooks/useImageLib'
 import ImageCard from './ImageCard'
 import ImagesHeader from './images-header'
+
 
 export default function ImageMapper() {
   const { images, loadMore, loading, error, searchImages, source, setSource } =
@@ -83,3 +84,4 @@ export default function ImageMapper() {
     </div>
   )
 }
+

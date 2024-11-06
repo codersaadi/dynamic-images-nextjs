@@ -1,4 +1,4 @@
-import { ImageIcon } from 'lucide-react'
+
 import Image from 'next/image'
 import Link from 'next/link'
 import type React from 'react'
@@ -11,10 +11,11 @@ interface ImageCardProps {
 }
 
 const ImageCard: React.FC<ImageCardProps> = ({ image }) => {
+  const [isImageLoading, setImageLoading] = useState(true)
   if (!image) return null
 
   const backgroundColor = image.color ? image.color : '#f0f0f0' // Example fallback color, adjust as needed
-  const [isImageLoading, setImageLoading] = useState(true)
+ 
 
   const ImageContent = (
     <>
