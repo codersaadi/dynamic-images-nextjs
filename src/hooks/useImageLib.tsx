@@ -1,16 +1,28 @@
 import { useCallback, useEffect, useRef, useState } from 'react'
 import type { UnsplashImage } from '@/types/media'
 import { fetchLibImages } from '@/actions/images/get-images'
-type $ImageSource = 'pixabay' | 'unsplash' | 'pexels'
-
+export type $ImageSource = 'pixabay' | 'unsplash' | 'pexels'
+import {useQueryState} from 'nuqs'
 export default function useImagesLib() {
+  
   const [images, setImages] = useState<UnsplashImage[]>([])
   const [loading, setLoading] = useState<boolean>(false)
   const [error, setError] = useState<string | null>(null)
-  const [page, setPage] = useState<number>(1)
-  const [query, setQuery] = useState<string>('')
-  const [source, setSource] = useState<$ImageSource>('unsplash')
-  const [hasMore, setHasMore] = useState<boolean>(true)
+  const [page, setPage] = useQueryState<number>('page', {
+    parse: (value) => parseInt(value, 10),
+    defaultValue: 1,
+  })
+  const [query, setQuery] = useQueryState('query', {
+    clearOnDefault: true,
+  })
+  const [source, setSource] = useQueryState('source', {
+    parse: (value) => value === 'unsplash' ? 'unsplash' : value === 'pixabay' ? 'pixabay' : 'pexels',
+    defaultValue: 'unsplash' as $ImageSource,
+  })
+  const [hasMore, setHasMore] = useQueryState('hasMore', {
+    parse: (value) => value === 'true',
+    defaultValue: true,
+  })
   const fetchedPages = useRef<Set<string>>(new Set())
   const initialRender = useRef(true)
 
@@ -61,7 +73,7 @@ export default function useImagesLib() {
   )
 
   useEffect(() => {
-    fetchImages(page, query, source)
+    fetchImages(page, query || '', source)
   }, [fetchImages, page, query, source])
 
   const loadMore = () => {
